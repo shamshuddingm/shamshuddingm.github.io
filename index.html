@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shamshuddin GM · Finance, Tax and Compliance · AI and Automation Projects</title>
+<meta name="description" content="Shamshuddin GM — Lead, Finance, Tax and Compliance. 13+ years across India and US entities, and 33 finance automations built with Google Apps Script, QuickBooks and Zoho APIs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1e8;--ink:#171512;--ink2:#57524a;--ink3:#8c867b;--tile:#fff;--line:#e5dfd2;--amber:#f5a524;--amber-ink:#3b2600;--amber-soft:#fbe3b4;--dark:#171512;--dark-ink:#f4f1e8;--dark-ink2:#bdb6aa}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'DM Sans',system-ui,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.disp{font-family:'Urbanist',sans-serif}
+
+/* nav */
+.nav{position:sticky;top:14px;z-index:40;margin:14px auto 0;max-width:1180px;padding:0 20px}
+.nav-in{background:var(--dark);color:var(--dark-ink);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 14px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Urbanist';font-weight:800;font-size:20px}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--amber);color:var(--amber-ink);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:16px}
+.links{display:flex;gap:26px;font-size:14px}
+.links a{color:var(--dark-ink2);transition:color .15s}.links a:hover,.links a.on{color:var(--amber)}
+.talk{background:var(--dark-ink);color:var(--ink);font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px}
+.talk:hover{background:var(--amber)}
+.nav{position:sticky}.nav-r{display:flex;align-items:center;gap:8px}
+.links a.res{color:var(--amber)}
+.burger{display:none;width:42px;height:42px;border-radius:50%;border:none;background:#2c2925;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger span{width:18px;height:2px;background:var(--dark-ink);border-radius:2px;transition:transform .2s,opacity .2s}
+.nav.open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}.nav.open .burger span:nth-child(2){opacity:0}.nav.open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.view{display:none;animation:fadein .35s ease}.view.on{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.view:not(#v-home) section:first-child{padding-top:56px}
+.explore{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}
+.ex{background:var(--tile);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:18px;transition:transform .18s,border-color .18s}
+.ex:hover{transform:translateY(-3px);border-color:var(--amber)}
+.ex span{font-family:'Urbanist';font-weight:800;color:var(--ink3)}
+.ex b{font-family:'Urbanist';font-size:24px;font-weight:800}
+.ex i{font-style:normal;width:36px;height:36px;border-radius:50%;background:var(--dark);color:var(--amber);display:flex;align-items:center;justify-content:center;align-self:flex-end}
+.ex.a{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}.ex.a span{color:var(--amber-ink)}
+.ex.d{background:var(--dark);border-color:var(--dark);color:var(--dark-ink)}.ex.d i{background:var(--amber);color:var(--amber-ink)}
+
+/* hero */
+.hero{position:relative;text-align:center;padding:46px 0 0;min-height:760px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--tile);border:1px solid var(--line);border-radius:999px;padding:6px 16px 6px 6px;font-size:13.5px;font-weight:500}
+.badge b{width:26px;height:26px;border-radius:50%;background:var(--dark);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:12px}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800;letter-spacing:-2px;line-height:1.02;margin:18px 0 10px}
+.hero h1 span{color:var(--amber)}
+.hero .sub{font-size:18px;color:var(--ink2)}
+.stage{position:relative;height:560px;margin-top:6px}
+.ring{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:560px;height:560px;border-radius:50% 50% 0 0;background:var(--amber);opacity:.95}
+.ring:after{content:'';position:absolute;inset:46px 46px 0;border-radius:50% 50% 0 0;border:2px dashed rgba(59,38,0,.25);border-bottom:none}
+.photo{position:absolute;left:50%;bottom:0;transform:translateX(-50%);height:540px;z-index:2;filter:contrast(1.05)}
+.fade{position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,var(--bg));z-index:3}
+.side{position:absolute;z-index:4;text-align:left}
+.left1{left:0;top:70px}
+.left2{left:0;top:300px}
+.right1{right:0;top:60px;text-align:right;max-width:290px}
+.right2{right:0;top:270px;max-width:330px;display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.side h4{font-size:15px;font-weight:500;color:var(--ink2);margin-bottom:12px}
+.soc{display:flex;gap:10px}
+.soc a{width:40px;height:40px;border-radius:50%;background:var(--tile);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .15s}
+.soc a:hover{background:var(--dark);color:var(--amber);border-color:var(--dark)}
+.soc svg{width:18px;height:18px}
+.big{font-family:'Urbanist';font-size:30px;font-weight:800;color:var(--amber);line-height:1}
+.big+p{font-size:15px;color:var(--ink2);margin-top:6px}
+.quote{font-family:'Urbanist';font-size:44px;color:var(--amber);line-height:.6;font-weight:800}
+.right1 p{font-size:17px;line-height:1.5;color:var(--ink2);margin-top:8px}
+.pill{font-size:14px;font-weight:500;padding:8px 16px;border-radius:999px}
+.pill.d{background:var(--dark);color:var(--dark-ink)}.pill.a{background:var(--amber);color:var(--amber-ink)}
+.cta{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:5;display:flex;gap:6px;background:rgba(255,255,255,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.8);padding:6px;border-radius:999px}
+.cta a{font-family:'Urbanist';font-weight:700;font-size:20px;padding:12px 26px;border-radius:999px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.cta .p1{background:var(--amber);color:var(--amber-ink)}
+.cta .p1 i{width:28px;height:28px;border-radius:50%;background:var(--dark);color:var(--dark-ink);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:15px}
+.cta .p2{color:var(--ink);border:1.5px solid var(--ink)}
+.cta a:hover{transform:translateY(-1px)}
+.spin{position:absolute;right:40px;top:-175px;width:118px;height:118px;z-index:4;display:block}
+.spin svg{width:100%;height:100%;animation:rot 14s linear infinite}
+.spin b{position:absolute;inset:38px;border-radius:50%;background:var(--amber);color:var(--amber-ink);display:flex;align-items:center;justify-content:center;font-size:18px}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+/* marquee */
+.mq-wrap{overflow:hidden;margin-top:34px}.marq{background:var(--dark);color:var(--dark-ink);overflow:hidden;padding:16px 0;border-top:3px solid var(--amber);border-bottom:3px solid var(--amber)}
+.marq div{display:flex;gap:40px;width:max-content;white-space:nowrap;animation:mq 40s linear infinite;font-family:'Urbanist';font-weight:700;font-size:clamp(16px,2.2vw,22px)}
+.marq span:nth-child(odd){color:var(--amber)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:84px 0 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink2)}
+.kicker:before{content:'';width:22px;height:2px;background:var(--amber)}
+.h2{font-size:clamp(32px,4.4vw,50px);font-weight:800;letter-spacing:-1px;line-height:1.08;margin:10px 0 28px}
+.h2 span{color:var(--amber)}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.about p{font-size:17px;line-height:1.75;color:var(--ink2);margin-bottom:14px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.st{background:var(--tile);border:1px solid var(--line);border-radius:22px;padding:22px}
+.st.a{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.st.d{background:var(--dark);border-color:var(--dark);color:var(--dark-ink)}
+.st b{font-family:'Urbanist';font-size:44px;font-weight:800;display:block;line-height:1;letter-spacing:-1px}
+.st span{font-size:14px;display:block;margin-top:10px;opacity:.85}
+
+.tl{position:relative;padding-left:30px}
+.tl:before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.job{position:relative;background:var(--tile);border:1px solid var(--line);border-radius:22px;padding:22px 24px;margin-bottom:16px}
+.job:before{content:'';position:absolute;left:-28px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--amber);border:3px solid var(--bg)}
+.job.now{background:var(--dark);color:var(--dark-ink);border-color:var(--dark)}
+.job .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.job h3{font-size:21px;font-weight:800}
+.job .when{font-size:13.5px;font-weight:700;color:var(--amber);background:var(--amber-soft);color:var(--amber-ink);padding:4px 12px;border-radius:999px}
+.job.now .when{background:var(--amber)}
+.job .co{font-size:15px;color:var(--ink2);margin:4px 0 10px}
+.job.now .co{color:var(--dark-ink2)}
+.job ul{list-style:none;display:grid;gap:8px}
+.job li{font-size:15px;line-height:1.55;padding-left:18px;position:relative;color:var(--ink2)}
+.job.now li{color:var(--dark-ink2)}
+.job li:before{content:'';position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+
+.init{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ic.d{background:var(--dark);color:var(--dark-ink);border-color:var(--dark)}.ic.d p{color:var(--dark-ink2)}.ic.a{background:var(--amber);border-color:var(--amber)}.ic.a p,.ic.a .n{color:var(--amber-ink)}
+.ic{background:var(--tile);border:1px solid var(--line);border-radius:22px;padding:22px}
+.ic .n{font-family:'Urbanist';font-weight:800;color:var(--amber);font-size:15px}
+.ic h3{font-size:19px;font-weight:800;margin:8px 0}
+.ic p{font-size:14.5px;line-height:1.55;color:var(--ink2)}
+
+/* projects bento */
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.t{background:var(--tile);border-radius:22px;padding:20px;border:1px solid var(--line)}
+.span2{grid-column:span 2}.row2{grid-row:span 2}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 8px}
+.filter{font:inherit;font-size:13.5px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--tile);color:var(--ink2);cursor:pointer}
+.filter.on{background:var(--dark);color:var(--dark-ink);border-color:var(--dark)}
+.search{flex:1;min-width:200px;font:inherit;font-size:14px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--tile);color:var(--ink);outline:none}
+.search:focus{border-color:var(--amber)}
+.sec{margin-top:30px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;padding:0 4px}
+.sec-head h2{font-size:24px;font-weight:800}
+.sec-head span{font-size:13px;color:var(--ink3);white-space:nowrap;margin-left:10px}
+.card{cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:transform .18s,border-color .18s;min-height:150px}
+.card:hover{transform:translateY(-3px);border-color:var(--amber)}
+.card.dark{background:var(--dark);color:var(--dark-ink);border-color:var(--dark)}
+.card .cat{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:#b5720a}
+.card.dark .cat{color:var(--amber)}
+.card h3{font-size:18px;font-weight:800;line-height:1.25}
+.card.flag h3{font-size:27px;letter-spacing:-.3px}
+.card p{font-size:13.5px;line-height:1.55;color:var(--ink2)}
+.card.dark p{color:var(--dark-ink2)}
+.card .foot{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px;padding-top:6px}
+.tag{font-size:11.5px;padding:3px 10px;border-radius:999px;background:var(--bg);color:var(--ink2)}
+.card.dark .tag{background:#2c2925;color:var(--dark-ink2)}
+.card .more{font-size:13px;font-weight:700;color:#b5720a;margin-top:4px}
+.card.dark .more{color:var(--amber)}
+.hl{list-style:none;margin-top:10px;display:grid;gap:8px}
+.hl li{font-size:14px;color:var(--dark-ink);padding-left:22px;position:relative}
+.hl li:before{content:'✓';position:absolute;left:0;color:var(--amber);font-weight:700}
+@media (min-width:1001px){.fill4{grid-column:span 4}.fill3{grid-column:span 3}.fill2{grid-column:span 2}}
+@media (min-width:601px){.card.wide{grid-column:span 2}}
+.card.wide .thumb{height:190px}
+
+.pv{background:#fff;border:1px solid #e5dfd2;border-radius:14px;overflow:hidden;font-size:11px;line-height:1.35;color:#1d1b18;text-align:left;font-family:'DM Sans',sans-serif}
+.pv-bar{display:flex;align-items:center;gap:5px;padding:7px 10px;background:#f1ede4;border-bottom:1px solid #e5dfd2}
+.pv-bar i{width:7px;height:7px;border-radius:50%;background:#d6cfc1}
+.pv-bar span{margin-left:6px;font-weight:700;color:#57524a;font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-bar em{margin-left:auto;font-style:normal;font-size:9px;background:#fbe3b4;color:#3b2600;padding:1px 7px;border-radius:9px;white-space:nowrap}
+.pv-body{padding:10px}
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:6px;margin-bottom:9px}
+.pk div{background:#f7f4ee;border-radius:8px;padding:6px 8px}.pk small{display:block;color:#8c867b;font-size:9.5px}.pk b{font-size:13.5px;font-family:'Urbanist';font-weight:800}
+.pk div.hi{background:#171512;color:#f4f1e8}.pk div.hi small{color:#bdb6aa}
+.pbars{display:flex;align-items:flex-end;gap:7px;height:72px;border-bottom:1px solid #ece7dd}
+.pbars>div{min-width:0;flex:1;display:flex;gap:2px;align-items:flex-end;height:100%}
+.pbars>div.stk{flex-direction:column;gap:1px;align-items:stretch;align-self:flex-end}
+.pbars span{flex:1;border-radius:3px 3px 0 0;display:block}
+.pbars>div.stk span{width:100%;border-radius:2px;min-height:0}
+.plab{display:flex;gap:7px;color:#8c867b;font-size:9px;margin:3px 0 8px}.plab span{flex:1;text-align:center}
+.pleg{display:flex;flex-wrap:wrap;gap:8px;font-size:9.5px;color:#57524a;margin-bottom:8px}.pleg i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.ptab{width:100%;border-collapse:collapse}.ptab td,.ptab th{padding:4px 3px;border-bottom:1px solid #f0ece4;text-align:left;font-size:10.5px;white-space:nowrap}.ptab th{color:#8c867b;font-weight:500}.ptab td:last-child,.ptab th:last-child{text-align:right}
+.red{color:#c0392b}.grn{color:#0f7a4f}.amb{color:#b5720a}
+.aging{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:4px 0 6px}
+.pv-in{display:flex;gap:6px;margin-bottom:9px}.pv-in div{flex:1;border:1px solid #e5dfd2;border-radius:8px;padding:6px 9px;color:#1d1b18}.pv-in b{background:#171512;color:#f5a524;border-radius:8px;padding:6px 12px}
+.pperson{display:flex;gap:9px;align-items:center;margin-bottom:8px}.pperson .av{width:34px;height:34px;border-radius:50%;background:#f5a524;color:#3b2600;display:flex;align-items:center;justify-content:center;font-weight:800}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}.pgrid div{background:#f7f4ee;border-radius:7px;padding:5px 7px}.pgrid small{display:block;color:#8c867b;font-size:9px}
+.tree{display:flex;flex-direction:column;align-items:center;gap:10px}
+.tree .row{display:flex;gap:6px;justify-content:center;width:100%;position:relative}
+.node{background:#f7f4ee;border:1px solid #e5dfd2;border-radius:8px;padding:5px 7px;text-align:center;min-width:0;flex:1;max-width:120px}
+.node b{display:block;font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.node small{color:#8c867b;font-size:9px;white-space:nowrap}
+.node.top{background:#171512;color:#f4f1e8;border-color:#171512;flex:none;min-width:120px}.node.top small{color:#f5a524}
+.node.mid{border-color:#f5a524;background:#fff7e6}
+.steps5{display:flex;gap:4px;margin-bottom:9px}.steps5 div{flex:1;text-align:center;font-size:9px;color:#8c867b}
+.steps5 div i{display:block;height:5px;border-radius:3px;background:#e5dfd2;margin-bottom:4px}
+.steps5 div.ok i{background:#0f7a4f}.steps5 div.cur i{background:#f5a524}.steps5 div.cur{color:#1d1b18;font-weight:700}
+.chk{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0ece4;font-size:10.5px}
+.thumb{height:150px;overflow:hidden;border-radius:14px;margin-bottom:4px;pointer-events:none;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.bigpv{margin-top:12px}
+.mpv{display:none}.mpv.on{display:block}.mpv .pv{font-size:12.5px}
+.empty{display:none;text-align:center;color:var(--ink3);padding:40px 0}
+
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sk h3{font-size:18px;font-weight:800;margin-bottom:12px}
+.sk .chips{display:flex;flex-wrap:wrap;gap:7px}
+.sk .chips span{font-size:13px;padding:5px 12px;border-radius:999px;background:var(--bg);color:var(--ink2)}
+.sk.d{background:var(--dark);color:var(--dark-ink);border-color:var(--dark)}
+.sk.d .chips span{background:#2c2925;color:var(--dark-ink2)}
+.sk.a{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.sk.a .chips span{background:rgba(255,255,255,.45);color:var(--amber-ink)}
+
+.contact{margin:56px 0 30px;background:var(--dark);color:var(--dark-ink);border-radius:32px;padding:54px 40px;text-align:center;position:relative;overflow:hidden}
+.contact:before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:var(--amber);opacity:.12;right:-80px;top:-120px}
+.contact h2{font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-1px;line-height:1.05}
+.contact h2 span{color:var(--amber)}
+.contact p{color:var(--dark-ink2);font-size:17px;margin:14px auto 26px;max-width:560px}
+.cbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cbtns a{font-weight:700;padding:13px 24px;border-radius:999px;font-size:15px}
+.cbtns .a{background:var(--amber);color:var(--amber-ink)}
+.cbtns .o{border:1.5px solid var(--dark-ink2);color:var(--dark-ink)}
+footer{text-align:center;font-size:13px;color:var(--ink3);padding:10px 0 30px}
+
+/* modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(23,21,18,.6);z-index:60;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.mbox{background:var(--tile);border-radius:24px;max-width:760px;width:100%;max-height:88vh;overflow-y:auto;position:relative}
+.mtop{background:var(--dark);color:var(--dark-ink);padding:28px 30px 24px;border-radius:24px 24px 0 0}
+.mtop .eb{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;color:var(--amber)}
+.mtop h3{font-size:28px;font-weight:800;margin:8px 0}
+.mtop p{color:var(--dark-ink2);font-size:15px;line-height:1.6}
+.mchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mchips span{font-size:12.5px;padding:5px 12px;border-radius:999px;background:#2c2925;color:var(--dark-ink2)}
+.mbody{padding:24px 30px 30px}
+.mbody h4{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#b5720a;margin:18px 0 10px}
+.mbody h4:first-child,.mpv.on+h4{margin-top:0}.mpv.on{margin-bottom:18px}
+.mbody p{font-size:15px;line-height:1.65}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:0 0 10px 38px;font-size:14.5px;line-height:1.55}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--amber);color:var(--amber-ink);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.feats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.feats div{background:var(--bg);border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.45}
+.close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#2c2925;color:var(--dark-ink);font-size:18px;cursor:pointer}
+
+@media (max-width:1000px){
+  .explore{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spin{right:10px}
+  .about{grid-template-columns:1fr}
+  .init{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:1150px){
+  .side{display:none}.mob{display:flex!important}
+  .links{gap:16px;font-size:13.5px}
+}
+@media (max-width:900px){.nav .talk{display:none}.links{gap:13px;font-size:13px}.logo{font-size:18px}}
+@media (max-width:760px){
+  .links{display:none;position:absolute;left:20px;right:20px;top:calc(100% + 8px);background:var(--dark);border-radius:24px;padding:10px;flex-direction:column;gap:2px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+  .nav.open .links{display:flex}
+  .links a{padding:12px 16px;border-radius:14px;font-size:16px}
+  .links a:hover,.links a.on{background:#2c2925}
+  .burger{display:flex}
+  .nav .talk{display:inline-block}
+}
+@media (max-width:600px){
+  .hero{min-height:0}
+  .stage{height:420px}.ring{width:340px;height:380px}.photo{height:400px}
+  .cta a{font-size:16px;padding:10px 16px}
+  .spin{width:90px;height:90px;top:auto;bottom:120px}.spin b{inset:29px}
+  .init,.skills,.bento{grid-template-columns:minmax(0,1fr)}.st b{font-size:32px}
+  .span2,.row2{grid-column:auto;grid-row:auto}
+  .feats{grid-template-columns:minmax(0,1fr)}
+  .contact{padding:40px 22px}
+}
+.mob{display:none;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+@media (max-width:380px){.stage{height:380px}.ring{width:290px;height:340px}.photo{height:350px}.cta a{font-size:14px;padding:9px 12px}.hero h1{letter-spacing:-1px}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-in">
+  <a class="logo" href="#home"><i>S</i>Shamshu.</a>
+  <div class="links" id="links">
+    <a href="#home" class="on">Home</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">AI projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a><a href="https://drive.google.com/file/d/1obu-pzCDi0qXu1eEVbXfDbWBxDtYC31R/view?usp=drive_link" target="_blank" class="res">Resume ↗</a>
+  </div>
+  <div class="nav-r"><a class="talk" href="#contact">Let's talk</a><button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+</div></nav>
+
+<div class="view on" id="v-home">
+<div class="wrap">
+  <div class="hero" id="home">
+    <span class="badge"><b>★</b>13+ years · Finance, tax and compliance leader</span>
+    <h1>I'm <span>Shamshuddin GM</span></h1>
+    <div class="sub">Lead – Finance, Tax and Compliance · Spendflo · Bengaluru, India</div>
+
+    <div class="stage">
+      <a class="spin" href="#projects" aria-label="View AI projects">
+        <svg viewBox="0 0 120 120"><defs><path id="c" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><circle cx="60" cy="60" r="58" fill="#171512"/><text font-family="Urbanist" font-weight="800" font-size="12.5" letter-spacing="3.2" fill="#f4f1e8"><textPath href="#c" textLength="286" lengthAdjust="spacing">AI PROJECTS • AUTOMATION •</textPath></text></svg>
+        <b>→</b>
+      </a>
+
+      <div class="side left1">
+        <h4>Connect with me</h4>
+        <div class="soc">
+          <a href="https://www.linkedin.com/in/shamshuddin-gm-36a76862" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></svg></a>
+          <a href="mailto:shamshuddingm@gmail.com" target="_blank" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a href="https://drive.google.com/file/d/1obu-pzCDi0qXu1eEVbXfDbWBxDtYC31R/view?usp=drive_link" target="_blank" aria-label="Resume" title="Resume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></a>
+        </div>
+      </div>
+      <div class="side left2">
+        <div class="big" id="heroCount">33</div>
+        <p>Automations running in production<br>across finance, tax and HR</p>
+      </div>
+      <div class="side right1">
+        <div class="quote">“</div>
+        <p>Finance leader running the full close across India and US entities — and automating it with QuickBooks and Zoho APIs.</p>
+      </div>
+      <div class="side right2">
+        <span class="pill d">Ind AS + US GAAP</span><span class="pill a">Month-end close</span>
+        <span class="pill a">GST · TDS</span><span class="pill d">Transfer pricing</span>
+        <span class="pill d">Apps Script</span><span class="pill a">QuickBooks + Zoho API</span>
+      </div>
+
+      <div class="ring"></div>
+      <img class="photo" alt="Shamshuddin GM" src="data:image/webp;base64,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">
+      <div class="fade"></div>
+      <div class="cta">
+        <a class="p1" href="#projects">AI projects <i>→</i></a>
+        <a class="p2" href="#contact">Contact me</a>
+      </div>
+    </div>
+    <div class="mob"><span class="pill d">Ind AS + US GAAP</span><span class="pill a">GST · TDS</span><span class="pill d">Apps Script</span><span class="pill a">QuickBooks + Zoho API</span></div>
+  </div>
+</div>
+
+<div class="mq-wrap"><div class="marq"><div id="marq"></div></div></div>
+<div class="wrap">
+  <div class="explore">
+    <a href="#about" class="ex a"><span>01</span><b>About me</b><i>→</i></a>
+    <a href="#experience" class="ex"><span>02</span><b>Experience</b><i>→</i></a>
+    <a href="#projects" class="ex d"><span>03</span><b>AI projects</b><i>→</i></a>
+    <a href="https://drive.google.com/file/d/1obu-pzCDi0qXu1eEVbXfDbWBxDtYC31R/view?usp=drive_link" target="_blank" class="ex"><span>04</span><b>Resume</b><i>↗</i></a>
+  </div>
+</div>
+</div>
+
+<div class="wrap">
+<div class="view" id="v-about">
+  <section id="about">
+    <div class="kicker">About me</div>
+    <div class="h2">I built a finance function <span>from the ground up</span> — then automated it.</div>
+    <div class="about">
+      <div>
+        <p>Finance professional with 13+ years independently leading the full finance function across India and US entities — Ind AS and US GAAP close, P&amp;L ownership, statutory compliance, audit, FP&amp;A, payroll and cross-border intercompany accounting.</p>
+        <p>Today I lead Finance, Tax and Compliance at Spendflo India, the subsidiary of Spendflo Inc., San Francisco, managing two direct reports. I work hands-on in QuickBooks Online and Zoho Books down to the API — which is how the automations below came to exist.</p>
+        <p>B.Com in Accounting and Finance. CMA (US) candidate with the Institute of Management Accountants.</p>
+      </div>
+      <div class="stats">
+        <div class="st a"><b>13+</b><span>Years in finance and accounting</span></div>
+        <div class="st d"><b id="aboutCount">33</b><span>Automations in production</span></div>
+        <div class="st"><b>2</b><span>Entities run end to end — India and US</span></div>
+        <div class="st"><b>&lt;30 min</b><span>Close tasks that used to take ~4 hours</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Key initiatives</div>
+    <div class="h2">Work that <span>moved the needle</span></div>
+    <div class="init">
+      <div class="ic"><div class="n">01</div><h3>Finance and close automation</h3><p>QuickBooks and Zoho API integrations via Apps Script cut close tasks from ~4 hours to under 30 minutes and removed copy-paste errors.</p></div>
+      <div class="ic d"><div class="n">02</div><h3>Transfer pricing and MSA</h3><p>Modelled the cost-plus structure between the India and US entities and drove the MSA amendment with Legal and the US CFO — preventing a transfer pricing misstatement.</p></div>
+      <div class="ic"><div class="n">03</div><h3>SOP and controls library</h3><p>Complete accounting SOP library — close checklist, AP/AR, bank recs, payroll, GST, intercompany — for consistent, audit-ready execution.</p></div>
+      <div class="ic a"><div class="n">04</div><h3>SaaS spend optimisation</h3><p>Led a company-wide review of SaaS spend that identified significant savings, alongside monthly MIS and variance commentary for US leadership.</p></div>
+      <div class="ic"><div class="n">05</div><h3>Underwater ESOP tax position</h3><p>Researched the nil perquisite position for underwater ESOP options under Indian and US tax law, supporting cross-border ESOP administration.</p></div>
+      <div class="ic"><div class="n">06</div><h3>Internal controls and audits</h3><p>Designed and enforced controls across AP, AR, payroll and intercompany, and run statutory, tax and transfer pricing audits end to end.</p></div>
+</div>
+  </section>
+
+</div>
+<div class="view" id="v-experience">
+  <section id="experience">
+    <div class="kicker">Experience</div>
+    <div class="h2">Where I've <span>worked</span></div>
+    <div class="tl">
+      <div class="job now">
+        <div class="top"><h3>Lead — Finance, Tax and Compliance</h3><span class="when">Apr 2025 — Present</span></div>
+        <div class="co">Spendflo India Private Limited, Chennai · Subsidiary of Spendflo Inc., San Francisco · People manager (2 direct reports)</div>
+        <ul>
+          <li>Own month-end and year-end close for India and US — P&amp;L, balance sheet, cash flow, accruals, depreciation and all reconciliations — producing CPA-ready packages for the CFO.</li>
+          <li>Lead all Indian statutory compliance (GST, TDS, income tax, PT, PF/ESI, ROC, FEMA, transfer pricing) and US compliance (W-9, W-8BEN/E, 1099, Georgia ST-3).</li>
+          <li>Designed the cost-plus transfer pricing structure between Spendflo India and Inc., and drove the MSA amendment with Legal and the US CFO.</li>
+          <li>Own statutory, tax and transfer pricing audits end to end; design internal controls across AP, AR, payroll and intercompany.</li>
+          <li>Deliver monthly MIS dashboards and variance commentary to US leadership; led a SaaS spend optimisation review.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="top"><h3>Finance and Compliance</h3><span class="when">Dec 2021 — Apr 2025</span></div>
+        <div class="co">Spendflo India Private Limited</div>
+        <ul>
+          <li>Ran complete finance operations for a fast-growing US-parented SaaS company — AP, AR, GL, payroll, reconciliations, close and compliance on QuickBooks Online and Zoho Books.</li>
+          <li>Built automated MIS and reconciliation workflows; budget-to-actual variance analysis and cash flow forecasting.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="top"><h3>Finance Manager</h3><span class="when">Feb 2015 — Dec 2021</span></div>
+        <div class="co">Codebrahma Technologies, Bengaluru</div>
+        <ul>
+          <li>Led the full finance function for 7 years — GL, AP, AR, end-to-end payroll and Form 16, fixed assets and close — with GST, TDS, income tax, service tax and ROC compliance.</li>
+          <li>Managed statutory and tax audits end to end; supervised junior accounting staff.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="top"><h3>Accounts Manager</h3><span class="when">Dec 2012 — Jan 2015</span></div>
+        <div class="co">Reach Process Outsourcing, Bengaluru / Chennai</div>
+        <ul><li>Full-cycle bookkeeping, AP, AR, payroll and reconciliations for multiple client accounts; budgets, forecasts and statutory filings.</li></ul>
+      </div>
+      <div class="job">
+        <div class="top"><h3>Accountant</h3><span class="when">Feb 2011 — Dec 2012</span></div>
+        <div class="co">Zimson Times Pvt Ltd, Bengaluru</div>
+        <ul><li>Bookkeeping, reconciliations, vendor payments, collections, payroll, statutory filings and cash flow tracking.</li></ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="view" id="v-projects">
+  <section id="projects">
+    <div class="kicker">AI and automation projects</div>
+    <div class="h2"><span id="projCount">33</span> automations <span>running in production</span></div>
+    <div class="toolbar" id="toolbar"><input class="search" id="search" type="search" placeholder="Search projects, e.g. TDS, Slack, offer letter"></div>
+    <div id="sections"></div>
+    <div class="empty" id="empty">No projects match that search.</div>
+  </section>
+
+</div>
+<div class="view" id="v-skills">
+  <section id="skills">
+    <div class="kicker">Skills</div>
+    <div class="h2">What I <span>bring</span></div>
+    <div class="skills">
+      <div class="t sk d"><h3>Accounting and controllership</h3><div class="chips"><span>Month/year-end close</span><span>P&amp;L and BS ownership</span><span>GL management</span><span>Reconciliations</span><span>AP and AR</span><span>Payroll accounting</span><span>Fixed asset register</span><span>CPA-ready reporting</span></div></div>
+      <div class="t sk"><h3>Tax and statutory compliance</h3><div class="chips"><span>GST</span><span>TDS</span><span>Income tax</span><span>PT</span><span>PF/ESI</span><span>ROC</span><span>FEMA</span><span>Transfer pricing</span><span>W-9 · W-8BEN/E</span><span>1099</span><span>Georgia ST-3</span><span>Form 16</span></div></div>
+      <div class="t sk a"><h3>Automation and platforms</h3><div class="chips"><span>Google Apps Script</span><span>QuickBooks Online + API</span><span>Zoho Books + API</span><span>Tally</span><span>Maxio</span><span>Prophix</span><span>Stripe</span><span>Advanced Excel</span><span>Google Workspace</span></div></div>
+      <div class="t sk"><h3>FP&amp;A and business finance</h3><div class="chips"><span>Budgeting and forecasting</span><span>Variance analysis</span><span>MIS dashboards</span><span>KPI tracking</span><span>SaaS spend optimisation</span><span>Cash flow monitoring</span><span>CFO partnering</span></div></div>
+      <div class="t sk"><h3>Audit, controls and process</h3><div class="chips"><span>External audit management</span><span>Internal controls design</span><span>SOP development</span><span>Process automation</span><span>Vendor and payroll partners</span></div></div>
+      <div class="t sk"><h3>Intercompany and cross-border</h3><div class="chips"><span>Cost-plus TP</span><span>Intercompany MSA</span><span>FEMA</span><span>Cross-border fund movement</span><span>Ind AS + US GAAP reporting</span><span>ESOP cross-border tax</span></div></div>
+    </div>
+  </section>
+
+</div>
+<div class="view" id="v-contact">
+  <div class="contact" id="contact">
+    <h2>Let's build a finance function <span>that runs itself.</span></h2>
+    <p>Open to conversations about finance leadership, compliance across India and the US, and finance automation.</p>
+    <div class="cbtns">
+      <a class="a" href="mailto:shamshuddingm@gmail.com" target="_blank">shamshuddingm@gmail.com</a>
+      <a class="o" href="https://www.linkedin.com/in/shamshuddin-gm-36a76862" target="_blank">LinkedIn profile</a>
+      <a class="o" href="https://drive.google.com/file/d/1obu-pzCDi0qXu1eEVbXfDbWBxDtYC31R/view?usp=drive_link" target="_blank">View resume ↗</a>
+    </div>
+  </div>
+</div>
+  <footer>© Shamshuddin GM</footer>
+</div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="mbox" role="dialog" aria-modal="true">
+    <button class="close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div class="mtop"><div class="eb" id="mCat"></div><h3 id="mTitle"></h3><p id="mDesc"></p><div class="mchips" id="mTools"></div></div>
+    <div class="mbody"><div class="mpv" id="mPv"><h4>Preview · sample data</h4><div id="mPvBox"></div></div><h4>What it does</h4><p id="mWhat"></p><h4>How it works</h4><ol class="steps" id="mFlow"></ol><h4>Key features</h4><div class="feats" id="mFeat"></div></div>
+  </div>
+</div>
+
+<script>
+var SECTIONS = [
+  {key:'rep', name:'Financial reporting and accounting', icon:'📊'},
+  {key:'ar',  name:'Receivables and collections', icon:'💰'},
+  {key:'tax', name:'Tax and compliance', icon:'🧾'},
+  {key:'hr',  name:'HR and people operations', icon:'👥'},
+  {key:'doc', name:'Documents and payments', icon:'📄'},
+  {key:'dash',name:'Dashboards and analytics', icon:'📈'}
+];
+
+var P = [
+/* ---------------- Reporting ---------------- */
+{sec:'rep', flag:true, title:'Zoho Books balance sheet and P&L sync', cat:'Financial reporting',
+ blurb:'Month-wise balance sheet and P&L for Spendflo India from Dec-2021, rebuilt with the full Chart of Accounts hierarchy.',
+ tools:['Zoho Books API','Google Sheets','Weekly schedule'],
+ what:'Pulls Spendflo India\'s balance sheet (as at each month-end) and profit and loss (each month\'s activity) from Zoho Books into two Google Sheet tabs, laid out exactly like the management metrics sheet — section headers, groups, parent and child accounts and "Total for…" rows.',
+ flow:['Menu: Zoho Sync → Sync now, or the weekly schedule fires','Refresh the Zoho OAuth token from Script Properties (no secrets in the sheet)','Request each month\'s report sequentially to stay under Zoho\'s rate limits','Cache finished months so re-syncs only fetch what changed','Rebuild the account hierarchy from the Chart of Accounts','Write "India BS API" and "India P&L API" tabs with formatting','Pause before the 6-minute Apps Script limit and resume automatically'],
+ feat:['Month-wise history from Dec-2021','Chart of Accounts hierarchy rebuild','Rate-limit aware with auto pause and resume','Month cache for fast re-syncs','Accrual basis, Zoho export style layout','Sync log and debug tab']},
+{sec:'rep', title:'QuickBooks P&L sync', cat:'Financial reporting',
+ blurb:'Nightly P&L pull from QuickBooks Online into a formatted sheet.',
+ tools:['QuickBooks Online API','OAuth2','Daily 10 PM IST'],
+ what:'Fetches the latest profit and loss from QuickBooks Online every night at 10 PM IST, or on demand with a date range from the sheet menu.',
+ flow:['Daily 10 PM IST trigger runs','Connect to QuickBooks via OAuth2','Fetch revenue, expenses and profit','Parse the hierarchical P&L structure','Format with colour-coded headers and indentation','Update the "PnL Auto" tab and stamp the sync time'],
+ feat:['Daily auto-sync','Manual sync with date range picker','Hierarchical indentation','Custom "QB PnL" menu']},
+{sec:'rep', title:'QuickBooks balance sheet sync', cat:'Financial reporting',
+ blurb:'Daily assets, liabilities and equity with a balance check.',
+ tools:['QuickBooks Online API','OAuth2','Daily 10 PM IST'],
+ what:'Daily sync of the QuickBooks balance sheet, with month-over-month tracking and a built-in check that assets equal liabilities plus equity.',
+ flow:['Daily 10 PM IST trigger','OAuth2 connection to QuickBooks','Fetch assets, liabilities and equity','Verify the balance sheet balances','Format by section and write to the sheet'],
+ feat:['Daily auto-sync','Balance verification','Month-to-month comparison','Sectioned formatting']},
+{sec:'rep', title:'QBO revenue by customer by month', cat:'Revenue reporting',
+ blurb:'Recognised revenue per customer per month since Jan 2021, split recurring vs non-recurring.',
+ tools:['QuickBooks Online API','Shared QBO library','Weekly Sunday sync'],
+ what:'Builds a customer × month revenue matrix from QuickBooks P&L (accrual), with separate "Recurring Revenue" and "Non-Recurring Income" tabs driven by a user-maintained account mapping.',
+ flow:['Weekly Sunday night sync (last 24 months) or menu sync','Pull the P&L summarised by customer, one call per month','Cache each month in a hidden tab so syncs only re-pull their window','Classify income accounts using the "Account Mapping" tab','Write account rows, totals, then customers A–Z','Long runs save progress and resume via a one-off trigger','Email the owner if a sync fails'],
+ feat:['History from Jan 2021','Recurring / non-recurring split','Editable account mapping kept across syncs','Resumable long runs','Reuses the Collections Dashboard QBO connection as a library','Failure alerts by email']},
+{sec:'rep', title:'Zoho department ledgers', cat:'Ledger management',
+ blurb:'Pick a ledger and date range from a menu and pull it into its own tab.',
+ tools:['Zoho Books API','Custom menu'],
+ what:'Tracks department ledgers such as Branding and Events from Zoho Books, selected from a custom sheet menu.',
+ flow:['Open the Zoho menu in the sheet','Choose a ledger and date range','Fetch the ledger from Zoho Books','Format and write to the ledger\'s tab'],
+ feat:['Multiple ledger accounts','Date range selection','Department-wise tracking']},
+{sec:'rep', title:'QuickBooks department ledgers', cat:'Ledger management',
+ blurb:'Separate QBO ledgers for Marketing, Sales, Dev and Events teams.',
+ tools:['QuickBooks Online API','Google Sheets'],
+ what:'Maintains department-specific QuickBooks ledgers so each team sees only its own transactions, with a consolidated admin view.',
+ flow:['Fetch the department\'s ledger from QuickBooks','Extract all transactions','Format by department','Update the department sheet with team-level access'],
+ feat:['Department-wise ledgers','Team-level access control','Budget tracking per department','Consolidated admin view']},
+
+/* ---------------- Receivables ---------------- */
+{sec:'ar', flag:true, pv:'collections', title:'Collections dashboard and weekly pulse', cat:'Collections',
+ blurb:'Daily QBO sync of invoices and payments into a two-tab web dashboard, plus a Monday "Collections Pulse" email to founders.',
+ tools:['QuickBooks Online API','Apps Script web app','Gmail','Daily + weekly'],
+ what:'Syncs QuickBooks invoices and payments every morning, serves a Spendflo-only web dashboard of collections performance, and emails a visual Collections Pulse to the founders, FinOps and CS every Monday.',
+ flow:['Daily 10–11 AM IST sync of QBO invoices and payments (from Jan 2025)','Store results in the bound sheet and sync log','Web app renders two tabs: collections overview and ownership view','Monday 10 AM IST: build the Collections Pulse email with an image summary','Send from "Shamshu\'s Agent" to the recipient list','Its QBO functions are published as a library reused by other projects'],
+ feat:['Two-tab web dashboard (domain only)','Automated Monday email','Connect QuickBooks from the sheet menu','JSON feed for checks','Reusable QBO library for other scripts','Test-email-to-me option']},
+{sec:'ar', pv:'ar', title:'AR dashboard and AR Pulse email', cat:'Receivables',
+ blurb:'Weekly snapshot of receivables from the Invoice Master, emailed as an image with a link to the live dashboard.',
+ tools:['Apps Script web app','Gmail','Weekly Monday'],
+ what:'Turns the Invoice Master sheet into an "Accounts Receivable – Weekly Snapshot" web app with a second "Collections accountability – who owns what" tab, and sends an AR Pulse email every Monday.',
+ flow:['Monday 10 AM IST trigger','Take a snapshot of the Invoice Master','Render the AR Pulse image and email body','Email founders, FinOps and CS with an animated "View dashboard" button','Dashboard tabs: weekly snapshot and owner accountability'],
+ feat:['Two-tab AR web app','Image-first email summary','Snapshot history','Sheet menu: send now, test to me, open dashboard']},
+{sec:'ar', title:'AR bot for Slack', cat:'Receivables',
+ blurb:'Monday morning overdue report posted to Slack, with threads for overdue and due-soon invoices.',
+ tools:['Slack API','Google Sheets','Weekly Mon 10:30 IST'],
+ what:'Reads the invoice tab and posts a summary to a Slack channel every Monday at 10:30 AM IST, with thread replies listing all overdue invoices and those due in the next 7 days, tagging owners.',
+ flow:['Weekly trigger fires Monday 10:30 AM IST','Read invoices and compute overdue and due-in-7-days','Map owners to Slack IDs from the users tab','Post the summary message','Post two thread replies with the detail','Flag invoices overdue beyond 60 days for escalation'],
+ feat:['TEST / LIVE channel switch','Preview without sending','Owner tagging via Slack IDs','Secrets in Script Properties','Schedule on/off from the menu']},
+{sec:'ar', title:'Overdue invoices from Zoho', cat:'Invoice tracking',
+ blurb:'Pulls overdue Zoho invoices with days overdue into a tracking sheet.',
+ tools:['Zoho Books API','Google Sheets'],
+ what:'Tracks overdue invoices from Zoho with automatic sync to Google Sheets and debug tools for the API.',
+ flow:['Query Zoho for overdue invoices','Extract amount, customer and due date','Calculate days overdue','Sync to the "Overdue from Zoho" sheet','Auto-refresh tokens'],
+ feat:['Overdue detection','Payment status tracking','Token refresh management','Debug functions']},
+{sec:'ar', title:'QBO AR ageing report', cat:'AR management',
+ blurb:'Ageing buckets by customer with 90+ day items highlighted.',
+ tools:['QuickBooks Online API','Google Sheets'],
+ what:'Generates AR ageing reports in 0–30, 30–60, 60–90 and 90+ day buckets, summarised by customer for collection priority.',
+ flow:['Fetch invoice data from QuickBooks','Calculate days overdue','Group into ageing buckets','Summarise by customer','Highlight 90+ day items'],
+ feat:['Ageing buckets','Customer summary','Collection priority highlighting','Daily sync capability']},
+
+/* ---------------- Tax ---------------- */
+{sec:'tax', flag:true, title:'Auto TDS payable report', cat:'Tax automation',
+ blurb:'Every month: sync last month\'s bills, build the TDS payable report in Drive and email the team. Hours of work down to minutes.',
+ tools:['Zoho Books API','Google Drive','Gmail','Monthly'],
+ what:'Removes manual bill entry for TDS. On the 5th (or the Friday before if it falls on a weekend) it syncs the previous month\'s bills, builds a formatted "TDS payable" Google Sheet with deductee PAN, section and rate, files it in a month folder and emails the link.',
+ flow:['Daily 8–9 AM IST check; runs on the 5th or the Friday before','Sync last month\'s bills from Zoho Books','Enrich with vendor PAN and TDS section (new-Act section mapping from Apr-2026)','Compute TDS for payroll vendor bills automatically','Create "<Mmm-yyyy>/TDS payable for Mmm-yyyy" in Drive','Payroll vendors shown in a separate block','Email the report link to the reporting list'],
+ feat:['Zero manual bill entry','Weekend-aware schedule','TDS section mapping table','Month-wise Drive folders','Configurable recipients and folder from the menu','Test email to me']},
+{sec:'tax', title:'Zoho bills register', cat:'Bill management',
+ blurb:'One row per bill line item with GST, TDS, vendor PAN/GSTIN and attachments saved to Drive.',
+ tools:['Zoho Books API','Google Drive','Google Sheets'],
+ what:'Builds Spendflo India\'s bills register from Zoho Books: one row per line item with IGST/CGST/SGST, TDS, vendor PAN and GST number, plus each bill\'s attachment saved to Drive and hyperlinked.',
+ flow:['Menu sync: previous month, this month, this year, FY Apr–Mar or custom range','Queue bills and fetch line-item detail','Stay under Zoho\'s 100 calls per minute','Save bill attachments to Drive and link them','Re-sync replaces rows in the chosen range','Pause and resume before the 6-minute limit'],
+ feat:['21-column GST/TDS register','Attachments archived to Drive','Range-replace re-syncs','Skips void and draft bills','Resumable queue']},
+{sec:'tax', title:'US sales tax by state', cat:'US compliance',
+ blurb:'Daily Zoho Billing sync with calendar-year state × month tabs and economic nexus tracking.',
+ tools:['Zoho Billing API','Google Sheets','Daily'],
+ what:'Syncs invoices from Zoho Billing every day and builds "CY yyyy" tabs of US state × month sales for Sent, Overdue and Paid invoices, with economic nexus thresholds and the month each state was crossed.',
+ flow:['Daily invoice sync into Master Invoices and month tabs','Filter to Sent, Overdue and Paid','Normalise state codes and variants to full state names','Build calendar-year tabs: states by month, US total, non-US, grand total','Compare against the "Economic Nexus by State" thresholds','Flag US invoices with no state captured'],
+ feat:['State name normalisation','Ties to Master Invoices total','Nexus % of threshold and month crossed','Missing-state flags']},
+{sec:'tax', title:'Georgia Tax Center code forwarder', cat:'US compliance',
+ blurb:'Forwards GTC security-code emails to the sales tax consultant within a minute.',
+ tools:['Gmail','Time trigger'],
+ what:'Watches for Georgia Tax Center security code emails and forwards them to the sales tax consultant automatically, so filings aren\'t blocked waiting on Shamshu\'s inbox.',
+ flow:['Runs every minute','Look for new emails from the Georgia DOR sender only','Forward to the consultant; original stays unread','Store the last forwarded timestamp','Lock prevents overlapping runs'],
+ feat:['Near-instant forwarding','No duplicate forwards','Sender-restricted for safety','One-click test']},
+{sec:'tax', title:'Form 16 bulk distribution', cat:'Bulk email',
+ blurb:'Emails each employee their own Form 16 with send tracking.',
+ tools:['Gmail','Google Drive'],
+ what:'Batch-distributes Form 16 tax certificates to all employees, attaching each person\'s own PDF and tracking what has been sent.',
+ flow:['Prepare Form 16 PDFs for all employees','Click "Send Form 16"','Read the employee email list','Send personalised emails with the individual Form 16 attached','Record the send timestamp and skip anyone already sent'],
+ feat:['Individual attachments','Personalised emails','Duplicate-send prevention','Send log']},
+
+/* ---------------- HR ---------------- */
+{sec:'hr', flag:true, pv:'offboard', title:'Employee offboarding checklist', cat:'Multi-stage workflow',
+ blurb:'Five-stage HR → Finance → Manager → HR sign-off with a final PDF. No logins, no chasing.',
+ tools:['Apps Script web app','Gmail','PDF'],
+ what:'Runs offboarding as a chained workflow: HR submits, Finance reviews loans, taxes, assets and bills, the manager confirms exit date and SaaS access, HR finalises, and a PDF report goes to Finance and HR.',
+ flow:['HR submits employee and salary details','Finance receives a link to its review form','Manager receives a link to confirm exit date and SaaS tools','HR confirms insurance, severance and comments','A PDF report is generated and emailed to Finance and HR','Every stage is timestamped'],
+ feat:['5-stage approval chain','Link-based forms, no logins','Mobile-friendly','SaaS tool tracking','Automated PDF','Full audit trail']},
+{sec:'hr', pv:'org', title:'Org chart web app', cat:'Web application',
+ blurb:'Live, searchable Spendflo org chart read straight from the HR sheet.',
+ tools:['Apps Script web app','Google Sheets'],
+ what:'Serves an interactive org chart built live from the HR sheet, showing only safe fields (name, designation, department, entity, manager, joining date).',
+ flow:['Open the web app','Read the org sheet live, matching columns by header','Send only non-sensitive fields to the browser','Render the reporting tree with search'],
+ feat:['Always current','No emails or personal fields exposed','Embeddable in Google Sites','Header aliases tolerate sheet changes']},
+{sec:'hr', title:'Appraisal letter automation', cat:'Document automation',
+ blurb:'Generates 50+ personalised appraisal letters as PDFs in one click.',
+ tools:['Google Docs','Google Drive','PDF'],
+ what:'One click generates, personalises, exports to PDF and files appraisal letters for every employee, with Drive links written back to the sheet.',
+ flow:['Fill employee data in the sheet','Appraisal Tools → Create appraisal letters','Merge name, increment and bonus into the Docs template','Export each letter to PDF','File in Drive by year and add the link to the sheet'],
+ feat:['Docs template merge','Batch PDFs','Organised Drive folders','Links in the sheet']},
+{sec:'hr', title:'Offer letter automation', cat:'Document automation',
+ blurb:'Template-based offer letters exported to PDF and filed in Drive.',
+ tools:['Google Docs','Google Drive','PDF'],
+ what:'Generates personalised offer letters from a template, exports PDFs and stores them in Drive.',
+ flow:['Prepare hire data in the sheet','Generate offer letters','Personalise from the template','Export PDF to OfferLetters/<year>','Write the link back to the sheet'],
+ feat:['Template merge','PDF export','Batch processing']},
+{sec:'hr', title:'Salary review workflow', cat:'HR process',
+ blurb:'Upload the salary register, send to managers, track approvals.',
+ tools:['Google Sheets','Gmail'],
+ what:'Upload a salary register, click send, and each manager gets the review for their team, with increment % calculated and approvals tracked.',
+ flow:['Upload the salary register with new CTC','Validate the data','Calculate increment % per employee','Email managers their review link','Track Pending → Approved / Rejected','Generate old vs new comparison'],
+ feat:['Increment calculation','Manager approvals by email','Comparison report','Audit trail']},
+{sec:'hr', title:'Offboarding alert from Workspace', cat:'Workflow automation',
+ blurb:'Detects users deleted in Google Workspace and emails their manager.',
+ tools:['Workspace Admin SDK','Gmail'],
+ what:'Compares Google Workspace users against the active employee list daily, and emails the manager when an account is deleted so handover starts straight away.',
+ flow:['Daily check for deleted users','Compare Workspace vs "Active Employees"','Email the manager with name, ID and date','Mark "Email sent" to prevent repeats'],
+ feat:['Admin SDK integration','Manager notifications','Duplicate prevention']},
+{sec:'hr', pv:'lookup', title:'Employee lookup web app', cat:'Web application',
+ blurb:'Type an employee ID, see their details instantly.',
+ tools:['Apps Script web app','Google Sheets'],
+ what:'A small web app: enter an employee ID and get name, designation, department, contact and manager from the live sheet.',
+ flow:['Open the web app','Enter an employee ID','Query the employee sheet','Show the matching details'],
+ feat:['Instant search','Live from the sheet','Feedback option']},
+
+/* ---------------- Documents and payments ---------------- */
+{sec:'doc', flag:true, title:'Invoice generator', cat:'Document generation',
+ blurb:'Sales data in, numbered PDF invoices out — filed in Drive and emailed to the customer.',
+ tools:['Google Docs','Google Drive','Gmail'],
+ what:'Reads sales data from the sheet, generates sequentially numbered invoice PDFs from a template, stores them in Drive and emails each customer.',
+ flow:['Enter sales data in the sheet','Click Generate invoices','Assign the next invoice number','Create the PDF from the template','Save to Invoices/<year>','Email the customer'],
+ feat:['Sequential numbering','Template-based PDFs','Drive filing','Automatic customer email']},
+{sec:'doc', title:'DocuSign to Drive', cat:'E-signature',
+ blurb:'Sends documents for signature and files the signed copies in Drive automatically.',
+ tools:['DocuSign API','Google Drive'],
+ what:'Sends documents through DocuSign and, once every party has signed, downloads the completed copy into the right Drive folder and updates the tracking sheet.',
+ flow:['Send the signing request via DocuSign','Recipients sign online','Detect completion','Download the signed document','File it in Drive and update status','Notify stakeholders'],
+ feat:['DocuSign integration','Completion detection','Auto-filing in Drive','Status tracking']},
+{sec:'doc', title:'Bulk personalised email', cat:'Bulk communication',
+ blurb:'200+ personalised emails with unique links in one click.',
+ tools:['Gmail','Google Sheets'],
+ what:'Sends personalised emails to a list with a unique link per person, timestamping each send and skipping anyone already done.',
+ flow:['Prepare the list in the sheet','Bulk Actions → Send bulk emails','Confirm','Personalise and send each email with a unique link','Stamp the timestamp column'],
+ feat:['Dynamic names','Unique links','200+ per run','Duplicate prevention']},
+{sec:'doc', title:'Razorpay payment logging', cat:'Payment gateway',
+ blurb:'Online payments logged to the accounting sheet as they happen.',
+ tools:['Razorpay webhooks','Google Sheets'],
+ what:'Razorpay notifies the script on each payment, which logs amount, customer, date and status and keeps paid vs unpaid invoices current.',
+ flow:['Customer pays online','Razorpay webhook calls the script','Log the transaction','Update the accounting sheet','Track paid vs unpaid'],
+ feat:['Webhook handling','Transaction log','Payment summaries']},
+{sec:'doc', title:'Bank payment file download', cat:'Banking',
+ blurb:'Daily NEFT/IMPS payment files saved to dated Drive folders.',
+ tools:['Banking API','Google Drive'],
+ what:'Downloads payment files from the bank every day and stores them in year/month Drive folders, ready for reconciliation.',
+ flow:['Daily trigger','Fetch payment transactions','Download in standard format','Save to BankingFiles/YYYY/MM'],
+ feat:['Automated downloads','Reconciliation-ready','Historical archive']},
+{sec:'doc', title:'Zoho reimbursement converter', cat:'Data transformation',
+ blurb:'Turns Zoho expense exports into GL-ready entries.',
+ tools:['Zoho export','Google Sheets'],
+ what:'Converts reimbursement data from Zoho into a standard GL format with automatic account mapping, ready for posting.',
+ flow:['Upload the Zoho export','Parse employee, amount, category and date','Map to GL accounts','Output the posting-ready file'],
+ feat:['GL account auto-mapping','Format standardisation','Conversion audit trail']},
+{sec:'doc', title:'Contract library', cat:'Document management',
+ blurb:'Contracts organised by type, vendor and year with access control.',
+ tools:['Google Drive'],
+ what:'Organises contracts into a structured Drive library with versions, permissions by contract type, search and archiving.',
+ flow:['Upload contracts to Drive','Sort by type, vendor and year','Track versions','Apply permissions','Archive expired contracts'],
+ feat:['Auto folder structure','Version tracking','Permission management']},
+
+/* ---------------- Dashboards ---------------- */
+{sec:'dash', flag:true, pv:'pd', title:'P&D spend dashboard', cat:'Analytics',
+ blurb:'Product and Development spend by month for founders, with a monthly email and QBO consultant ledgers.',
+ tools:['Apps Script web app','QuickBooks Online','Gmail','Monthly'],
+ what:'Turns the Product Spends Details sheet into a founder-facing web dashboard — 13-month trend by cost group (salaries, consultants, SaaS, other), FY quarters and YTD on the Feb–Jan year, and driver comments for material month-on-month moves — plus a monthly email version.',
+ flow:['Read the P&D table by row labels and month headers','Group costs into salaries, consultants, SaaS tools and other','Compute MoM changes and flag those above materiality','Pull driver notes from the "P&D Notes" tab','Serve the dashboard as a domain web app','Send the monthly email to leadership','Sync consultant GL detail from QuickBooks into the sheet'],
+ feat:['FY Feb–Jan quarters and YTD','Materiality-based driver notes','Email-safe HTML version','QBO consultant ledgers','Domain-restricted web app']},
+{sec:'dash', pv:'vp', title:'Variable pay dashboard', cat:'Compensation analytics',
+ blurb:'YTD bonus and incentive per employee with trends and year-end projection.',
+ tools:['Apps Script web app','Google Sheets'],
+ what:'Real-time view of variable pay: YTD bonus and incentive per employee, monthly trends, department breakdown and a year-end projection.',
+ flow:['Aggregate payroll data','Calculate YTD variable pay per employee','Break down bonus vs incentive','Show monthly trends by department','Project year-end payout'],
+ feat:['YTD per employee','Department breakdown','Year-end forecast','Search and export']},
+{sec:'dash', title:'Sheet reader utility', cat:'Utility',
+ blurb:'Reusable reader that extracts, cleans and validates data across sheets.',
+ tools:['Google Sheets'],
+ what:'Generic utility to read multiple sheets, extract chosen columns, transform and validate the data, and output a clean table.',
+ flow:['Configure source sheets','Read and extract columns','Transform formats','Validate and output'],
+ feat:['Multi-sheet reading','Transformation','Quality validation']}
+];
+
+
+function pvHTML(k){
+  function W(t,b){return '<div class="pv"><div class="pv-bar"><i></i><i></i><i></i><span>'+t+'</span><em>Sample data</em></div><div class="pv-body">'+b+'</div></div>';}
+  function bars(arr,cols){return '<div class="pbars">'+arr.map(function(g){return '<div>'+g.map(function(h,i){return '<span style="height:'+h+'%;background:'+cols[i]+'"></span>';}).join('')+'</div>';}).join('')+'</div>';}
+  function stack(arr,cols){return '<div class="pbars">'+arr.map(function(g){var tot=g.reduce(function(x,y){return x+y;},0);return '<div class="stk" style="height:'+tot+'%">'+g.map(function(h,i){return '<span style="flex:'+h+' 0 0;background:'+cols[i]+'"></span>';}).reverse().join('')+'</div>';}).join('')+'</div>';}
+  function lab(a){return '<div class="plab">'+a.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';}
+  var M=['Jun','Jul','Aug','Sep','Oct','Nov'];
+  if(k==='collections') return W('Collections dashboard',
+    '<div class="pk"><div class="hi"><small>Collected (Nov)</small><b>$412.6K</b></div><div><small>Overdue</small><b class="red">$86.2K</b></div><div><small>Avg days to pay</small><b>38</b></div><div><small>Collection rate</small><b class="grn">91%</b></div></div>'+
+    '<div class="pleg"><span><i style="background:#d6cfc1"></i>Invoiced</span><span><i style="background:#f5a524"></i>Collected</span></div>'+
+    bars([[62,55],[70,61],[66,63],[78,70],[84,74],[90,82]],['#d6cfc1','#f5a524'])+lab(M)+
+    '<table class="ptab"><tr><th>Customer</th><th>Owner</th><th>Overdue</th></tr><tr><td>Northwind Labs</td><td>Ananya R.</td><td class="red">$24,500 · 45d</td></tr><tr><td>Acme Retail</td><td>Karthik M.</td><td class="red">$18,200 · 32d</td></tr><tr><td>Bluepeak AI</td><td>Rohan S.</td><td class="amb">$9,750 · 12d</td></tr></table>');
+  if(k==='ar') return W('Accounts receivable – weekly snapshot',
+    '<div class="pk"><div class="hi"><small>Total AR</small><b>$642K</b></div><div><small>Overdue</small><b class="red">$186K</b></div><div><small>90+ days</small><b>$41K</b></div></div>'+
+    '<small style="color:#8c867b">Ageing</small><div class="aging"><span style="width:52%;background:#0f7a4f"></span><span style="width:20%;background:#f5a524"></span><span style="width:15%;background:#e07b39"></span><span style="width:13%;background:#c0392b"></span></div>'+
+    '<div class="pleg"><span><i style="background:#0f7a4f"></i>0–30</span><span><i style="background:#f5a524"></i>31–60</span><span><i style="background:#e07b39"></i>61–90</span><span><i style="background:#c0392b"></i>90+</span></div>'+
+    '<table class="ptab"><tr><th>Who owns what</th><th>Invoices</th><th>Overdue</th></tr><tr><td>Ananya R.</td><td>8</td><td>$72,400</td></tr><tr><td>Karthik M.</td><td>5</td><td>$54,100</td></tr><tr><td>Rohan S.</td><td>3</td><td>$21,300</td></tr></table>');
+  if(k==='org') return W('Company org chart',
+    '<div class="tree"><div class="row"><div class="node top"><b>Arjun Mehta</b><small>CEO</small></div></div>'+
+    '<div class="row"><div class="node mid"><b>Neha Kapoor</b><small>VP Engineering</small></div><div class="node mid"><b>Vikram Rao</b><small>Head of Finance</small></div><div class="node mid"><b>Sara Thomas</b><small>VP Sales</small></div></div>'+
+    '<div class="row"><div class="node"><b>Dev Iyer</b><small>Eng Manager</small></div><div class="node"><b>Priya Sharma</b><small>Sr Analyst</small></div><div class="node"><b>Rahul Verma</b><small>AE</small></div><div class="node"><b>Meera Nair</b><small>AE</small></div></div></div>'+
+    '<div class="pleg" style="margin:10px 0 0;justify-content:center"><span>48 people</span><span>·</span><span>6 departments</span><span>·</span><span>2 entities</span></div>');
+  if(k==='lookup') return W('Employee lookup',
+    '<div class="pv-in"><div>EMP-1042</div><b>Search</b></div>'+
+    '<div class="pperson"><div class="av">PS</div><div><b style="font-size:13px">Priya Sharma</b><br><span style="color:#8c867b">Senior Analyst · Finance</span></div></div>'+
+    '<div class="pgrid"><div><small>Department</small>Finance</div><div><small>Manager</small>Vikram Rao</div><div><small>Location</small>Bengaluru</div><div><small>Joined</small>12 Mar 2023</div><div><small>Email</small>priya@example.com</div><div><small>Entity</small>India</div></div>');
+  if(k==='offboard') return W('Offboarding · Rahul Verma (EMP-0981)',
+    '<div class="steps5"><div class="ok"><i></i>HR</div><div class="ok"><i></i>Finance</div><div class="cur"><i></i>Manager</div><div><i></i>HR final</div><div><i></i>PDF</div></div>'+
+    '<div class="chk"><span>Last working day</span><b>30 Nov 2026</b></div><div class="chk"><span>Laptop returned</span><span class="grn">✓ Done</span></div><div class="chk"><span>Loan / advance balance</span><span class="grn">₹0</span></div><div class="chk"><span>TDS on final settlement</span><span class="grn">✓ Computed</span></div><div class="chk"><span>SaaS access · Slack, Notion, Figma</span><span class="amb">Pending manager</span></div>');
+  if(k==='pd') return W('P&D spend · FY27',
+    '<div class="pk"><div class="hi"><small>Nov spend</small><b>$214K</b></div><div><small>MoM</small><b class="red">+3.1%</b></div><div><small>FY27 YTD</small><b>$2.18M</b></div></div>'+
+    '<div class="pleg"><span><i style="background:#1f4e79"></i>Salaries</span><span><i style="background:#e8833a"></i>Consultants</span><span><i style="background:#2a9d8f"></i>SaaS</span><span><i style="background:#b9c3cd"></i>Other</span></div>'+
+    stack([[52,18,10,6],[53,17,10,5],[54,20,11,6],[55,19,11,7],[56,22,12,6],[57,23,12,7]],['#1f4e79','#e8833a','#2a9d8f','#b9c3cd'])+lab(M)+
+    '<div class="chk"><span>Consultants +$6.4K</span><span style="color:#8c867b">New QA vendor onboarded</span></div>');
+  if(k==='vp') return W('Variable pay · YTD',
+    '<div class="pk"><div class="hi"><small>YTD paid</small><b>₹38.6L</b></div><div><small>Year-end forecast</small><b>₹52.0L</b></div><div><small>Employees</small><b>27</b></div></div>'+
+    '<table class="ptab"><tr><th>Employee</th><th>Dept</th><th>YTD</th></tr><tr><td>Ananya Rao</td><td>Sales</td><td>₹4.26L</td></tr><tr><td>Priya Sharma</td><td>Sales</td><td>₹3.68L</td></tr><tr><td>Rahul Verma</td><td>CS</td><td>₹2.59L</td></tr><tr><td>Karthik M.</td><td>Marketing</td><td>₹1.64L</td></tr></table>');
+  return '';
+}
+var current='all';
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
+function render(){
+  var q=document.getElementById('search').value.trim().toLowerCase(),root=document.getElementById('sections');root.innerHTML='';var shown=0;
+  SECTIONS.forEach(function(s){
+    if(current!=='all'&&current!==s.key)return;
+    var items=P.filter(function(p){if(p.sec!==s.key)return false;if(!q)return true;return (p.title+' '+p.cat+' '+p.blurb+' '+p.tools.join(' ')+' '+p.what).toLowerCase().indexOf(q)>-1;});
+    if(!items.length)return;
+    items.sort(function(a,b){return (b.flag?1:0)-(a.flag?1:0);});shown+=items.length;
+    var sec=el('div','sec'),head=el('div','sec-head');
+    head.appendChild(el('h2',null,s.icon+'  '+s.name));head.appendChild(el('span',null,items.length+(items.length===1?' project':' projects')));sec.appendChild(head);
+    var grid=el('div','bento');
+    items.forEach(function(p){
+      var big=p.flag&&!q,c=el('div','t card'+(big?' dark flag span2 row2':(p.pv?' wide':'')));
+      c.appendChild(el('div','cat',p.cat));c.appendChild(el('h3',null,p.title));c.appendChild(el('p',null,p.blurb));
+      if(big&&p.pv){var bp=el('div','bigpv');bp.innerHTML=pvHTML(p.pv);c.appendChild(bp);}
+      else if(big){var hl=el('ul','hl');p.feat.slice(0,4).forEach(function(f){hl.appendChild(el('li',null,f));});c.appendChild(hl);}
+      else if(p.pv){var th=el('div','thumb');th.innerHTML=pvHTML(p.pv);c.insertBefore(th,c.firstChild);}
+      var foot=el('div','foot');p.tools.slice(0,big?4:2).forEach(function(t){foot.appendChild(el('span','tag',t));});c.appendChild(foot);
+      c.appendChild(el('div','more','View details →'));c.onclick=function(){openModal(p);};grid.appendChild(c);
+    });
+    var cards=grid.children,cells=0;items.forEach(function(p){cells+=(p.flag&&!q)?4:(p.pv?2:1);});
+    var r=cells%4;
+    if(r){var last=items[items.length-1],cur=(last.flag&&!q)?2:(last.pv?2:1),span=Math.min(4,cur+(4-r));if(!(last.flag&&!q))cards[cards.length-1].classList.add('fill'+span);}
+    sec.appendChild(grid);root.appendChild(sec);
+  });
+  document.getElementById('empty').style.display=shown?'none':'block';
+}
+function openModal(p){
+  var s=SECTIONS.filter(function(x){return x.key===p.sec;})[0];
+  document.getElementById('mCat').textContent=s.name+' · '+p.cat;document.getElementById('mTitle').textContent=p.title;
+  document.getElementById('mDesc').textContent=p.blurb;document.getElementById('mWhat').textContent=p.what;
+  ['mTools','mFlow','mFeat'].forEach(function(id){document.getElementById(id).innerHTML='';});
+  p.tools.forEach(function(t){document.getElementById('mTools').appendChild(el('span',null,t));});
+  p.flow.forEach(function(f){document.getElementById('mFlow').appendChild(el('li',null,f));});
+  p.feat.forEach(function(f){document.getElementById('mFeat').appendChild(el('div',null,f));});
+  var mp=document.getElementById('mPv');mp.classList.toggle('on',!!p.pv);document.getElementById('mPvBox').innerHTML=p.pv?pvHTML(p.pv):'';
+  document.getElementById('modal').classList.add('show');document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal').classList.remove('show');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+(function(){
+  ['heroCount','aboutCount','projCount'].forEach(function(id){document.getElementById(id).textContent=P.length;});
+  var words=['Month-end close','QuickBooks API','Zoho Books API','GST · TDS','Transfer pricing','US GAAP · Ind AS','Apps Script','Audit-ready','US state tax','Payroll','FP&A'];
+  var m=document.getElementById('marq');words.concat(words).forEach(function(w){m.appendChild(el('span',null,w));m.appendChild(el('span',null,'✦'));});
+  var tb=document.getElementById('toolbar');
+  [{key:'all',name:'All'}].concat(SECTIONS.map(function(s){return{key:s.key,name:s.name.split(' and ')[0].replace('Financial reporting','Reporting')};})).forEach(function(f){
+    var b=el('button','filter'+(f.key==='all'?' on':''),f.name);
+    b.onclick=function(){current=f.key;[].forEach.call(document.querySelectorAll('.filter'),function(x){x.classList.remove('on');});b.classList.add('on');render();};
+    tb.insertBefore(b,document.getElementById('search'));
+  });
+  document.getElementById('search').addEventListener('input',render);
+  var VIEWS=['home','about','experience','projects','skills','contact'];
+  var nav=document.querySelector('.nav'),burger=document.getElementById('burger');
+  burger.onclick=function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o);};
+  window.showView=function(v,push){
+    if(VIEWS.indexOf(v)<0)v='home';
+    VIEWS.forEach(function(x){document.getElementById('v-'+x).classList.toggle('on',x===v);});
+    [].forEach.call(document.querySelectorAll('.links a'),function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+v);});
+    nav.classList.remove('open');burger.setAttribute('aria-expanded','false');
+    window.scrollTo(0,0);
+    if(push!==false){try{if(window.google&&google.script&&google.script.history){google.script.history.replace(null,{tab:v},'');}else{history.replaceState(null,'','#'+v);}}catch(e){}}
+  };
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]');if(!a)return;
+    var v=a.getAttribute('href').slice(1);
+    if(VIEWS.indexOf(v)>-1){e.preventDefault();showView(v);}
+  });
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target)){nav.classList.remove('open');}});
+  try{
+    if(window.google&&google.script&&google.script.url){google.script.url.getLocation(function(l){var t=(l.parameter&&l.parameter.tab)||(l.hash||'').replace('#','');if(t)showView(t,false);});}
+    else if(location.hash){showView(location.hash.slice(1),false);}
+  }catch(e){}
+  render();
+})();
+</script>
+</body>
+</html>
