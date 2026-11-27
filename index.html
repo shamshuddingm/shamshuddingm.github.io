@@ -157,6 +157,7 @@ section{padding:84px 0 0}
 .hl li:before{content:'✓';position:absolute;left:0;color:var(--amber);font-weight:700}
 @media (min-width:1001px){.fill4{grid-column:span 4}.fill3{grid-column:span 3}.fill2{grid-column:span 2}}
 @media (min-width:601px){.card.wide{grid-column:span 2}}
+@media (min-width:1001px){.card.tall{grid-row:span 2}.card.wide.tall .thumb{height:auto;-webkit-mask-image:none;mask-image:none}}
 .card.wide .thumb{height:190px}
 
 .pv{background:#fff;border:1px solid #e5dfd2;border-radius:14px;overflow:hidden;font-size:11px;line-height:1.35;color:#1d1b18;text-align:left;font-family:'DM Sans',sans-serif}
@@ -637,24 +638,12 @@ var P = [
  what:'Reads sales data from the sheet, generates sequentially numbered invoice PDFs from a template, stores them in Drive and emails each customer.',
  flow:['Enter sales data in the sheet','Click Generate invoices','Assign the next invoice number','Create the PDF from the template','Save to Invoices/<year>','Email the customer'],
  feat:['Sequential numbering','Template-based PDFs','Drive filing','Automatic customer email']},
-{sec:'doc', title:'DocuSign to Drive', cat:'E-signature',
- blurb:'Sends documents for signature and files the signed copies in Drive automatically.',
- tools:['DocuSign API','Google Drive'],
- what:'Sends documents through DocuSign and, once every party has signed, downloads the completed copy into the right Drive folder and updates the tracking sheet.',
- flow:['Send the signing request via DocuSign','Recipients sign online','Detect completion','Download the signed document','File it in Drive and update status','Notify stakeholders'],
- feat:['DocuSign integration','Completion detection','Auto-filing in Drive','Status tracking']},
 {sec:'doc', title:'Bulk personalised email', cat:'Bulk communication',
  blurb:'200+ personalised emails with unique links in one click.',
  tools:['Gmail','Google Sheets'],
  what:'Sends personalised emails to a list with a unique link per person, timestamping each send and skipping anyone already done.',
  flow:['Prepare the list in the sheet','Bulk Actions → Send bulk emails','Confirm','Personalise and send each email with a unique link','Stamp the timestamp column'],
  feat:['Dynamic names','Unique links','200+ per run','Duplicate prevention']},
-{sec:'doc', title:'Razorpay payment logging', cat:'Payment gateway',
- blurb:'Online payments logged to the accounting sheet as they happen.',
- tools:['Razorpay webhooks','Google Sheets'],
- what:'Razorpay notifies the script on each payment, which logs amount, customer, date and status and keeps paid vs unpaid invoices current.',
- flow:['Customer pays online','Razorpay webhook calls the script','Log the transaction','Update the accounting sheet','Track paid vs unpaid'],
- feat:['Webhook handling','Transaction log','Payment summaries']},
 {sec:'doc', title:'Bank payment file download', cat:'Banking',
  blurb:'Daily NEFT/IMPS payment files saved to dated Drive folders.',
  tools:['Banking API','Google Drive'],
@@ -667,12 +656,6 @@ var P = [
  what:'Converts reimbursement data from Zoho into a standard GL format with automatic account mapping, ready for posting.',
  flow:['Upload the Zoho export','Parse employee, amount, category and date','Map to GL accounts','Output the posting-ready file'],
  feat:['GL account auto-mapping','Format standardisation','Conversion audit trail']},
-{sec:'doc', title:'Contract library', cat:'Document management',
- blurb:'Contracts organised by type, vendor and year with access control.',
- tools:['Google Drive'],
- what:'Organises contracts into a structured Drive library with versions, permissions by contract type, search and archiving.',
- flow:['Upload contracts to Drive','Sort by type, vendor and year','Track versions','Apply permissions','Archive expired contracts'],
- feat:['Auto folder structure','Version tracking','Permission management']},
 
 /* ---------------- Dashboards ---------------- */
 {sec:'dash', flag:true, pv:'pd', title:'P&D spend dashboard', cat:'Analytics',
@@ -686,13 +669,7 @@ var P = [
  tools:['Apps Script web app','Google Sheets'],
  what:'Real-time view of variable pay: YTD bonus and incentive per employee, monthly trends, department breakdown and a year-end projection.',
  flow:['Aggregate payroll data','Calculate YTD variable pay per employee','Break down bonus vs incentive','Show monthly trends by department','Project year-end payout'],
- feat:['YTD per employee','Department breakdown','Year-end forecast','Search and export']},
-{sec:'dash', title:'Sheet reader utility', cat:'Utility',
- blurb:'Reusable reader that extracts, cleans and validates data across sheets.',
- tools:['Google Sheets'],
- what:'Generic utility to read multiple sheets, extract chosen columns, transform and validate the data, and output a clean table.',
- flow:['Configure source sheets','Read and extract columns','Transform formats','Validate and output'],
- feat:['Multi-sheet reading','Transformation','Quality validation']}
+ feat:['YTD per employee','Department breakdown','Year-end forecast','Search and export']}
 ];
 
 
@@ -757,6 +734,7 @@ function render(){
     });
     var cards=grid.children,cells=0;items.forEach(function(p){cells+=(p.flag&&!q)?4:(p.pv?2:1);});
     var r=cells%4;
+    if(!q&&items.length===2&&items[0].flag&&items[1].pv){cards[1].classList.add('tall');r=0;}
     if(r){var last=items[items.length-1],cur=(last.flag&&!q)?2:(last.pv?2:1),span=Math.min(4,cur+(4-r));if(!(last.flag&&!q))cards[cards.length-1].classList.add('fill'+span);}
     sec.appendChild(grid);root.appendChild(sec);
   });
