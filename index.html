@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shamshuddin GM · Finance, Tax and Compliance · AI and Automation Projects</title>
-<meta name="description" content="Shamshuddin GM — Lead, Finance, Tax and Compliance. 13+ years across India and US entities, and 33 finance automations built with Google Apps Script, QuickBooks and Zoho APIs.">
+<meta name="description" content="Shamshuddin GM — Lead, Finance, Tax and Compliance. 13+ years across India and US entities, and finance automations built with Google Apps Script, QuickBooks and Zoho APIs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@500;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
@@ -437,7 +437,7 @@ footer{text-align:center;font-size:13px;color:var(--ink3);padding:10px 0 30px}
     <div class="skills">
       <div class="t sk d"><h3>Accounting and controllership</h3><div class="chips"><span>Month/year-end close</span><span>P&amp;L and BS ownership</span><span>GL management</span><span>Reconciliations</span><span>AP and AR</span><span>Payroll accounting</span><span>Fixed asset register</span><span>CPA-ready reporting</span></div></div>
       <div class="t sk"><h3>Tax and statutory compliance</h3><div class="chips"><span>GST</span><span>TDS</span><span>Income tax</span><span>PT</span><span>PF/ESI</span><span>ROC</span><span>FEMA</span><span>Transfer pricing</span><span>W-9 · W-8BEN/E</span><span>1099</span><span>Georgia ST-3</span><span>Form 16</span></div></div>
-      <div class="t sk a"><h3>Automation and platforms</h3><div class="chips"><span>Google Apps Script</span><span>QuickBooks Online + API</span><span>Zoho Books + API</span><span>Tally</span><span>Maxio</span><span>Prophix</span><span>Stripe</span><span>Advanced Excel</span><span>Google Workspace</span></div></div>
+      <div class="t sk a"><h3>Automation and platforms</h3><div class="chips"><span>Google Apps Script</span><span>QuickBooks Online + API</span><span>Zoho Books + API</span><span>Brex API</span><span>Tally</span><span>Maxio</span><span>Prophix</span><span>Stripe</span><span>Advanced Excel</span><span>Google Workspace</span></div></div>
       <div class="t sk"><h3>FP&amp;A and business finance</h3><div class="chips"><span>Budgeting and forecasting</span><span>Variance analysis</span><span>MIS dashboards</span><span>KPI tracking</span><span>SaaS spend optimisation</span><span>Cash flow monitoring</span><span>CFO partnering</span></div></div>
       <div class="t sk"><h3>Audit, controls and process</h3><div class="chips"><span>External audit management</span><span>Internal controls design</span><span>SOP development</span><span>Process automation</span><span>Vendor and payroll partners</span></div></div>
       <div class="t sk"><h3>Intercompany and cross-border</h3><div class="chips"><span>Cost-plus TP</span><span>Intercompany MSA</span><span>FEMA</span><span>Cross-border fund movement</span><span>Ind AS + US GAAP reporting</span><span>ESOP cross-border tax</span></div></div>
@@ -503,6 +503,12 @@ var P = [
  what:'Builds a customer × month revenue matrix from QuickBooks P&L (accrual), with separate "Recurring Revenue" and "Non-Recurring Income" tabs driven by a user-maintained account mapping.',
  flow:['Weekly Sunday night sync (last 24 months) or menu sync','Pull the P&L summarised by customer, one call per month','Cache each month in a hidden tab so syncs only re-pull their window','Classify income accounts using the "Account Mapping" tab','Write account rows, totals, then customers A–Z','Long runs save progress and resume via a one-off trigger','Email the owner if a sync fails'],
  feat:['History from Jan 2021','Recurring / non-recurring split','Editable account mapping kept across syncs','Resumable long runs','Reuses the Collections Dashboard QBO connection as a library','Failure alerts by email']},
+{sec:'rep', title:'Brex reimbursements sync and QBO export', cat:'Expense accounting',
+ blurb:'Pulls employee reimbursement expenses from Brex into a sheet and exports a QuickBooks-ready CSV in one click.',
+ tools:['Brex API','QuickBooks Online','Google Sheets'],
+ what:'Fetches reimbursement expenses from the Brex API into a Google Sheet — employee, merchant, category, department, amount, approval and payment status, with a link back to the receipt in Brex — then turns the approved, processing payments into a CSV in QuickBooks bank-import format, so reimbursements are booked without retyping.',
+ flow:['Brex menu: sync this month, previous month, last 7/15/30/60 days, this year or custom dates','Call the Brex Expenses API for reimbursement-type expenses, expanding user, merchant, department and receipts','Page through results and convert amounts from minor units','Reset the sheet and reload only the chosen date range','Link each row to the expense in Brex (receipt files expire, so no copies are kept)','Brex → Download QBO format: pick approved expenses in payment processing','Build Transaction Date, Description (memo, merchant, category, amount, link) and amount columns as a CSV for QBO import'],
+ feat:['One-click QBO-ready CSV','Seven date-range sync options','Receipt links back to Brex','API token kept in Script Properties','Optional filter by employee email','Optional daily auto-sync']},
 {sec:'rep', title:'Zoho department ledgers', cat:'Ledger management',
  blurb:'Pick a ledger and date range from a menu and pull it into its own tab.',
  tools:['Zoho Books API','Custom menu'],
